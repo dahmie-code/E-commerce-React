@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
 import Product from "./Product";
-import Testimonial from "./TestimonialBlog";
+import Testimonial from "./Testimonial";
 
 const Home = () => {
     return (
