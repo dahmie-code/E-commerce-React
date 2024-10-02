@@ -4,6 +4,7 @@ import { ref, onValue } from 'firebase/database';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Hero from './Hero';
+import { useCart } from '../hooks/useCart';
 import '../styles/Product.scss';
 
 // Define the type for your product
@@ -18,6 +19,7 @@ const Shop: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
+  const { addToCart } = useCart();
 
   // Fetch products from Firebase on component mount
   useEffect(() => {
@@ -79,9 +81,10 @@ const Shop: React.FC = () => {
                     <img src={product.image} className="img-fluid product-thumbnail" alt={product.name} />
                     <h3 className="product-title">{product.name}</h3>
                     <strong className="product-price">${product.price}</strong>
-                    <span className="icon-cross">
+                    <button className="icon-cross"onClick={()=>addToCart(product)}>
+                      
                       <img src="src/assets/images/cross.svg" className="img-fluid" alt="cross icon" />
-                    </span>
+                    </button>
                   </a>
                 </div>
               ))}
@@ -94,7 +97,7 @@ const Shop: React.FC = () => {
               {/* Previous Button with Left Chevron */}
               <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                 <button onClick={handlePrevPage} className="page-link" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span> {/* Unicode for left chevron */}
+                  <span aria-hidden="true">&laquo;</span> 
                 </button>
               </li>
               
@@ -110,7 +113,7 @@ const Shop: React.FC = () => {
               {/* Next Button with Right Chevron */}
               <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
                 <button onClick={handleNextPage} className="page-link" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span> {/* Unicode for right chevron */}
+                  <span aria-hidden="true">&raquo;</span> 
                 </button>
               </li>
             </ul>

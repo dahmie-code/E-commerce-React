@@ -1,5 +1,4 @@
-// src/context/CartContext.tsx
-import React, { createContext, useReducer, useContext, ReactNode } from 'react';
+import { createContext, useReducer, ReactNode } from 'react';
 import { cartReducer, CartItem, Product } from './cartReducer';
 
 type CartContextType = {
@@ -9,14 +8,14 @@ type CartContextType = {
   cartItemCount: number;
 };
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 type CartProviderProps = {
   children: ReactNode;
 };
 
 const initialCartState = {
-  cartItems: [],
+  cartItems: [] as CartItem[],
 };
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
@@ -45,11 +44,4 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   );
 };
 
-// Custom hook to use CartContext
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
-  return context;
-};
+

@@ -75,5 +75,15 @@
 				margin-right: 20px;
 			}
 		}
+		.cart-count {
+			position: absolute;
+			top: 7px;
+			right: 6.75%;
+			background-color: red;
+			color: white;
+			border-radius: 50%;
+			padding: 0.25px 10px;
+			font-size: 12px;
+		  }
 	}
 }
