@@ -5,7 +5,13 @@ type CartContextType = {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: string) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
   cartItemCount: number;
+};
+// CartState Type
+type CartState = {
+  cartItems: CartItem[];
 };
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -14,34 +20,37 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
-const initialCartState = {
-  cartItems: [] as CartItem[],
+const initialCartState: CartState = {
+  cartItems: [],
 };
 
+// CartProvider Component
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialCartState);
 
-  // Add product to cart
   const addToCart = (product: Product) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
-  };
+  }; 
 
-  // Remove product from cart
   const removeFromCart = (id: string) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: id });
   };
 
-  // Calculate the total cart item count
-  const cartItemCount = state.cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const increaseQuantity = (id: string) => {
+    dispatch({ type: 'INCREASE_QUANTITY', payload: id });
+  };
+
+  const decreaseQuantity = (id: string) => {
+    dispatch({ type: 'DECREASE_QUANTITY', payload: id });
+  };
+
+  const cartItemCount = state.cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems: state.cartItems, addToCart, removeFromCart, cartItemCount }}>
+    <CartContext.Provider
+      value={{ cartItems: state.cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, cartItemCount }}
+    >
       {children}
     </CartContext.Provider>
   );
 };
-
-

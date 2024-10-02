@@ -28,7 +28,6 @@ const Shop: React.FC = () => {
     onValue(productsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        console.log("Products from Firebase:", data);
         const productsArray: Product[] = Object.keys(data).map((key) => ({
           id: key,
           name: data[key].name,
@@ -81,7 +80,7 @@ const Shop: React.FC = () => {
                     <img src={product.image} className="img-fluid product-thumbnail" alt={product.name} />
                     <h3 className="product-title">{product.name}</h3>
                     <strong className="product-price">${product.price}</strong>
-                    <button className="icon-cross"onClick={()=>addToCart(product)}>
+                    <button className="icon-cross"onClick={()=>addToCart(product)} >
                       
                       <img src="src/assets/images/cross.svg" className="img-fluid" alt="cross icon" />
                     </button>
