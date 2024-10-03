@@ -1,14 +1,14 @@
 import Choice from "./Choice";
 import Footer from "./Footer";
 import Hero from "./Hero";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Product from "./Product";
 import Testimonial from "./Testimonial";
 
 const Home = () => {
     return (
         <>
-        <Navbar />
+
         <Hero
         title="Modern Interior" 
         subtitle="Design Studio" 

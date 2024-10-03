@@ -24,6 +24,9 @@ type CartAction =
   
 // Cart Reducer
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
+  console.log("Reducer action:", action); 
+  console.log("Current state:", state); 
+
   switch (action.type) {
     case 'ADD_TO_CART': {
       const existingProduct = state.cartItems.find(item => item.id === action.payload.id);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import user from '../assets/images/user.svg';
 import cart from '../assets/images/cart.svg';
@@ -6,7 +6,7 @@ import { useCart } from '../hooks/useCart';
 
 const Navbar: React.FC = () => {
   const { cartItems } = useCart();
-
+  console.log("Navbar Cart Items:", cartItems);
   // Calculate the total number of items in the cart
   const totalItems = cartItems.reduce((total: number, item: { quantity: number }) => total + item.quantity, 0);
 
@@ -29,12 +29,12 @@ const Navbar: React.FC = () => {
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li><a className="nav-link" href="#"><img src={user} alt="User"/></a></li>
             <li className="nav-item">
-              <a className="nav-link" href="/cart">
+              <Link className="nav-link" to="/cart">
                 <img src={cart} alt="Cart" className="cart-icon" />
                 {totalItems > 0 && (
                   <span className="cart-count">{totalItems}</span>
                 )}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

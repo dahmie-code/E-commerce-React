@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { database } from '../Firebase/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
-import Navbar from './Navbar';
 import Footer from './Footer';
 import Hero from './Hero';
 import { useCart } from '../hooks/useCart';
@@ -16,10 +15,12 @@ type Product = {
 };
 
 const Shop: React.FC = () => {
+  const { addToCart, cartItems } = useCart();
+  console.log("Cart context (from useCart):", { addToCart, cartItems });
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
-  const { addToCart } = useCart();
+  // const { addToCart } = useCart();
 
   // Fetch products from Firebase on component mount
   useEffect(() => {
@@ -38,7 +39,7 @@ const Shop: React.FC = () => {
       }
     });
   }, []);
-
+   
   // Calculate the index range for the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -60,10 +61,12 @@ const Shop: React.FC = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-
+  const handleAddToCart = (product: Product) => {
+    console.log("Adding to cart:", product);
+    addToCart(product); // Trigger the action
+  };
   return (
     <>
-      <Navbar />
       <Hero
         title="Shop"
         description="Learn about our story and how we have grown to become a leader in modern interior design."
@@ -80,7 +83,7 @@ const Shop: React.FC = () => {
                     <img src={product.image} className="img-fluid product-thumbnail" alt={product.name} />
                     <h3 className="product-title">{product.name}</h3>
                     <strong className="product-price">${product.price}</strong>
-                    <button className="icon-cross"onClick={()=>addToCart(product)} >
+                    <button className="icon-cross"onClick={() => handleAddToCart(product)} >
                       
                       <img src="src/assets/images/cross.svg" className="img-fluid" alt="cross icon" />
                     </button>

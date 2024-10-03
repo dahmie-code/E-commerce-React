@@ -1,0 +1,73 @@
+@import '../styles/main';
+.before-footer-section {
+    padding: 40px 0;
+  
+    .site-blocks-table {
+      .table {
+        th, td {
+          padding: 1rem 0.75rem; 
+        }
+  
+        .product-thumbnail {
+          img {
+            width: 80px;
+            height: auto;
+          }
+        }
+  
+        .product-name {
+          h2 {
+            font-size: 1.1rem;
+          }
+        }
+
+        .quantity-container {
+          .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.9rem;
+          }
+  
+          .quantity-amount {
+            font-size: 1rem;
+            padding: 0.25rem;
+            max-width: 40px;
+          }
+        }
+
+        .btn-black {
+          padding: 0.25rem 0.75rem;
+          font-size: 0.9rem;
+        }
+  
+        .btn-outline-black {
+          padding: 0.25rem 0.75rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .btn-block {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+  
+    .btn-lg {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+
+  .cart-totals {
+    h4 {
+      font-size: 1.2rem;
+    }
+  
+    .text-black {
+      font-size: 1rem;
+    }
+  
+    .btn-lg {
+      padding: 0.50rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+  

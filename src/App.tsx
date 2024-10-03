@@ -4,6 +4,7 @@ import Cart from './components/Cart';
 import Shop from './components/Shop';
 import { CartProvider } from './context/CartContext'; 
 import './styles/main.scss';
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <>
       <Router>
         <CartProvider>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
