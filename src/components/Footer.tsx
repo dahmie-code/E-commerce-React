@@ -37,7 +37,7 @@ const Footer = () => {
 				</div>
 
 				<div className="row g-5 mb-5">
-					<div className="col-lg-4">
+					<div className="col-lg-4 pe-3">
 						<div className="mb-4 footer-logo-wrap"><a href="#" className="footer-logo">Luxe<span>.</span></a></div>
 						<p className="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
