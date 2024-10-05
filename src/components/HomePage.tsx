@@ -1,7 +1,7 @@
+import Blog from "./Blog";
 import Choice from "./Choice";
 import Footer from "./Footer";
 import Hero from "./Hero";
-// import Navbar from "./Navbar";
 import Product from "./Product";
 import Testimonial from "./Testimonial";
 
@@ -18,7 +18,8 @@ const Home = () => {
             />
         <Product/>
         <Choice/>
-        <Testimonial/>
+            <Testimonial />
+            <Blog/>
         <Footer/>
         </>
     );
