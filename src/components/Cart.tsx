@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import { useCart } from "../hooks/useCart"; 
 import '../styles/Cart.scss';
 
 const Cart = () => {
+    const navigate = useNavigate();
     const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
 
     useEffect(() => {
@@ -13,7 +15,10 @@ const Cart = () => {
     // Calculate the total price
     const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-      
+    const handleCheckOut = () => {
+
+        navigate('/checkout');
+      };
     return (
       <>
         <Hero
@@ -142,7 +147,7 @@ const Cart = () => {
   
                     <div className="row">
                       <div className="col-md-12">
-                        <button className="btn btn-black btn-lg py-3 btn-block">
+                        <button className="btn btn-black btn-lg py-3 btn-block" onClick={handleCheckOut}>
                           Proceed To Checkout
                         </button>
                       </div>

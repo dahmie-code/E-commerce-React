@@ -69,8 +69,8 @@ const Shop: React.FC = () => {
     <>
       <Hero
         title="Shop"
-        description="Learn about our story and how we have grown to become a leader in modern interior design."
-        button1Text="Shop Now"
+        description="Browse our collection of products"
+                button1Text="Shop Now"
         button2Text="Explore"
       />
       <div className="product-section before-footer-section">

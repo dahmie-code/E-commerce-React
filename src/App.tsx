@@ -8,6 +8,9 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import Service from './components/Service';
 import BlogPage from './components/BlogPage';
+import Contact from './components/Contact';
+import Checkout from './components/Checkout';
+import Thankyou from './components/Thankyou';
 
 
 function App() {
@@ -25,6 +28,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Service />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/thankyou" element={<Thankyou />} />
+
           </Routes>
         </CartProvider>
 </Router>
