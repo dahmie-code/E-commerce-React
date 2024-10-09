@@ -1,6 +1,37 @@
 import '../styles/Product.scss';
+import { useCart } from '../hooks/useCart';
+import { useEffect, useState } from 'react';
+import { limitToFirst, onValue, query, ref } from 'firebase/database';
+import { database } from '../Firebase/firebaseConfig';
 
-const Product = () => {
+
+
+type ProductItem = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+}
+
+const Product: React.FC = () => {
+  const [products, setProducts] = useState<ProductItem[]>([]);
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    const productsRef = query(ref(database, 'products/'), limitToFirst(3));
+    onValue(productsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const fetchedProducts: ProductItem[] = Object.keys(data).map((key) => ({
+          id: key,
+          name: data[key].name,
+          price: data[key].price,
+          image: data[key].image,
+        }));
+        setProducts(fetchedProducts)
+      }
+    })
+  }, [])
     return (
         <>
     <div className="product-section">
@@ -12,36 +43,18 @@ const Product = () => {
             <p><a href="/shop" className="btn">Explore</a></p>
                         </div>
                         
-          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-            <a className="product-item" href="/cart">
-              <img src="src/assets/images/product-1.png" alt="Nordic Chair" className="img-fluid product-thumbnail"/>
-              <h3 className="product-title">Nordic Chair</h3>
-                                <strong className="product-price">$50.00</strong>
-                                <span className="icon-cross">
-								<img src="src/assets/images/cross.svg" className="img-fluid"/>
-							</span>
-            </a>
-          </div>
-          <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-            <a className="product-item" href="/cart">
-              <img src="src/assets/images/product-2.png" alt="Kruzo Aero Chair" className="img-fluid product-thumbnail"/>
-              <h3 className="product-title">Kruzo Aero Chair</h3>
-                                <strong className="product-price">$78.00</strong>
-                                <span className="icon-cross">
-								<img src="src/assets/images/cross.svg" className="img-fluid"/>
-							</span>
-            </a>
-          </div>
-          <div className="col-lg-3">
-            <a className="product-item" href="/cart">
-              <img src="src//assets/images/product-3.png" alt="Ergonomic Chair" className="img-fluid product-thumbnail"/>
-              <h3 className="product-title">Ergonomic Chair</h3>
-                                <strong className="product-price">$43.00</strong>
-                                <span className="icon-cross">
-								<img src="src/assets/images/cross.svg" className="img-fluid"/>
-							</span>
-            </a>
-          </div>
+              {products.map((product) => (
+                <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0" key={product.id}>
+                  <div className="product-item">
+                  <img src={product.image} alt={product.name} className="img-fluid product-thumbnail" />
+                  <h3 className="product-title">{product.name}</h3>
+                    <strong className="product-price">${product.price.toFixed(2)}</strong>
+                    <span className="icon-cross" onClick={() => addToCart(product)}>
+                    <img src="src/assets/images/cross.svg" className="img-fluid" alt="cross icon" />
+                  </span>
+                  </div>
+                </div>
+              ))}
         </div>
       </div>
             </div>

@@ -3,6 +3,7 @@
 
 // Create SCSS variables
 $white: #ffffff;
+$red: #ff0000;
 $black: #000000;
 $primary: #3b5d50;
 $secondary: #f9bf29;
@@ -15,6 +16,7 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
+$desktop:1920px;
 
 $font-family: "Inter", sans-serif;
 @import 'bootstrap/scss/bootstrap';

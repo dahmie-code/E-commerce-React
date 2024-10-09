@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/Testimonial.scss';
 
 const Blog = () => {
@@ -9,7 +10,7 @@ const Blog = () => {
                     <h2 className="section-title">Recent Blog</h2>
                 </div>
                 <div className="col-md-6 text-start text-md-end">
-                    <a href="#" className="more">View All Posts</a>
+                    <Link to="/blog" className="more">View All Posts</Link>
                 </div>
             </div>
 
