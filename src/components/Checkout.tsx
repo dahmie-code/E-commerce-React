@@ -1,9 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Hero from "./Hero";
+import { getData } from 'country-list'; 
 
 const Checkout = () => {
+    interface Country {
+        name: string;
+        code: string;
+      }
     const navigate = useNavigate();
+
+
     const handleToggle = (elementId: string) => {
         const element = document.getElementById(elementId);
         if (element) {
@@ -14,7 +21,9 @@ const Checkout = () => {
     const handlePlaceOrder = () => {
 
         navigate('/thankyou');
-      };
+    };
+    
+    const countries: Country[] = getData();
       
     return (
         <>
@@ -40,15 +49,12 @@ const Checkout = () => {
 		            <div className="form-group">
 		              <label htmlFor="c_country" className="text-black">Country <span className="text-danger">*</span></label>
 		              <select id="c_country" className="form-control">
-		                <option value="1">Select a country</option>    
-		                <option value="2">bangladesh</option>    
-		                <option value="3">Algeria</option>    
-		                <option value="4">Afghanistan</option>    
-		                <option value="5">Ghana</option>    
-		                <option value="6">Albania</option>    
-		                <option value="7">Bahrain</option>    
-		                <option value="8">Colombia</option>    
-		                <option value="9">Dominican Republic</option>    
+                    <option value="">Select a country</option>
+                    {countries.map((country) => (
+                      <option key={country.code} value={country.name}>
+                        {country.name}
+                      </option>
+                    ))}  
 		              </select>
 		            </div>
 		            <div className="form-group row">
@@ -82,7 +88,7 @@ const Checkout = () => {
 
 		            <div className="form-group row">
 		              <div className="col-md-6">
-		                <label htmlFor="c_state_country" className="text-black">State / Country <span className="text-danger">*</span></label>
+		                <label htmlFor="c_state_country" className="text-black">State / Province<span className="text-danger">*</span></label>
 		                <input type="text" className="form-control" id="c_state_country" name="c_state_country"/>
 		              </div>
 		              <div className="col-md-6">
@@ -124,15 +130,12 @@ const Checkout = () => {
 		                  <div className="form-group">
 		                    <label htmlFor="c_diff_country" className="text-black">Country <span className="text-danger">*</span></label>
 		                    <select id="c_diff_country" className="form-control">
-		                      <option value="1">Select a country</option>    
-		                      <option value="2">bangladesh</option>    
-		                      <option value="3">Algeria</option>    
-		                      <option value="4">Afghanistan</option>    
-		                      <option value="5">Ghana</option>    
-		                      <option value="6">Albania</option>    
-		                      <option value="7">Bahrain</option>    
-		                      <option value="8">Colombia</option>    
-		                      <option value="9">Dominican Republic</option>    
+                            <option value="">Select a country</option>
+                    {countries.map((country) => (
+                      <option key={country.code} value={country.name}>
+                        {country.name}
+                      </option>
+                    ))}  
 		                    </select>
 		                  </div>
 
@@ -167,11 +170,11 @@ const Checkout = () => {
 
 		                  <div className="form-group row">
 		                    <div className="col-md-6">
-		                      <label htmlFor="c_diff_state_country" className="text-black">State / Country <span className="text-danger">*</span></label>
+		                      <label htmlFor="c_diff_state_country" className="text-black">State / Province <span className="text-danger">*</span></label>
 		                      <input type="text" className="form-control" id="c_diff_state_country" name="c_diff_state_country"/>
 		                    </div>
 		                    <div className="col-md-6">
-		                      <label htmlFor="c_diff_postal_zip" className="text-black">Posta / Zip <span className="text-danger">*</span></label>
+		                      <label htmlFor="c_diff_postal_zip" className="text-black">Postal / Zip Code<span className="text-danger">*</span></label>
 		                      <input type="text" className="form-control" id="c_diff_postal_zip" name="c_diff_postal_zip"/>
 		                    </div>
 		                  </div>
@@ -248,7 +251,7 @@ const Checkout = () => {
 		                </table>
 
 		                <div className="border p-3 mb-3">
-		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
+		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" onClick={() => handleToggle('collapsebank')} role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 
 		                  <div className="collapse" id="collapsebank">
 		                    <div className="py-2">
@@ -258,7 +261,7 @@ const Checkout = () => {
 		                </div>
 
 		                <div className="border p-3 mb-3">
-		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
+		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" onClick={() => handleToggle('collapsecheque')} role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
 
 		                  <div className="collapse" id="collapsecheque">
 		                    <div className="py-2">
@@ -268,7 +271,7 @@ const Checkout = () => {
 		                </div>
 
 		                <div className="border p-3 mb-5">
-		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+		                  <h3 className="h6 mb-0"><a className="d-block" data-bs-toggle="collapse" onClick={() => handleToggle('collapsepaypal')} role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
 
 		                  <div className="collapse" id="collapsepaypal">
 		                    <div className="py-2">
