@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle ="", description, button1Te
               <p className="mb-4">{description}</p>
               <p>
                 <Link to="/shop" className="btn btn-secondary me-2">{button1Text}</Link>
-                <Link to="/shop" className="btn btn-white-outline">{button2Text}</Link>
+                <Link to="/services" className="btn btn-white-outline">{button2Text}</Link>
               </p>
             </div>
           </div>

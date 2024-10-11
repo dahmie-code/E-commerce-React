@@ -1,95 +1,151 @@
 @import '../styles/main.scss';
 
 .hero {
+	position: relative; 
 	background: $primary;
 	padding: calc(4rem - 30px) 0 0rem 0;
+  
 	@media (min-width: $md) {
-		padding: calc(4rem - 30px) 0;
+	  padding: calc(4rem - 30px) 0;
 	}
+  
 	@media (min-width: $lg) {
-		padding: calc(8rem - 30px) 0;
+	  padding: calc(8rem - 30px) 0;
 	}
-	
+  
 	.intro-excerpt {
-		
-		position: relative;
-		z-index: 4;
-		@media (min-width: $lg) {
-			max-width: 450px;
-		}
+	  position: relative;
+	  z-index: 4;
+  
+	  @media (min-width: $lg) {
+		max-width: 450px;
+	  }
+  
+	  @media (max-width: $sm) {
+		text-align: center;
+		margin: 0 auto;
+	  }
 	}
+  
 	h1 {
-		font-weight: 700;
-		color: $white;
-		margin-bottom: 30px;
-
-		@media (min-width: $xxl) {
-			font-size: 54px;
-		}
+	  font-weight: 700;
+	  color: $white;
+	  margin-bottom: 30px;
+  
+	  @media (min-width: $xxl) {
+		font-size: 54px;
+	  }
+  
+	  @media (max-width: $sm) {
+		text-align: center;
+	  }
 	}
+  
 	p {
-		color: rgba($white, .5);
-		margin-botom: 30px;
+	  color: rgba($white, .5);
+	  margin-bottom: 30px;
+  
+	  @media (max-width: $sm) {
+		text-align: center;
+	  }
 	}
+  
 	.hero-img-wrap {
-		position: relative;
-		img {
-			position: relative;
-			top: 0px;
-			right: 0px;
-			z-index: 2;
-			max-width: 780px;
-			left: -20px;
-			@media (max-width: $sm) {
-display: none;
-			}
-			@media (min-width: $md) {
-				right: 0px;
-				left: 50px;
-				top: 110px;
-				max-width: 600px;
-			}
-			@media (min-width: $lg) {
-				left: -40px;
-				top: -10px;
-				position: absolute;
-				right: 30px;
-				max-width: 600px;
-			}
-			@media (min-width: $xl) {
-				left: 0px;
-				top: -80px;
-				max-width: 750px;
-				right: -100px;
-			}
-			
+	  position: relative;  
+	  img {
+		position: absolute; /* Set absolute to anchor it to the right */
+		top: 0;
+		right: 0; /* Aligned to the extreme right */
+		z-index: 2;
+		max-width: 50vw; /* Relative size */
+		
+		/* Hide image on smaller screens */
+		@media (max-width: $md) {
+		  display: none;
 		}
-		&:after {
-			content: "";
-			position: absolute;
-			width: 255px;
-			height: 217px;
-			background-image: url('../assets/images/dots-light.svg');
-			background-size: contain;
-			background-repeat: no-repeat;
-			right: -100px;
-			top: -0px;
-			@media (max-width: $sm) {
-display: none;
-			}
-			@media (min-width: $md) {
-				top: 100px;
-				right: 20px;
-				width: 200px;
-			}	
-			@media (min-width: $lg) {
-				top: -10px;
-				right: -20px;
-			}			
-			@media (min-width: $xl) {
-				top: -40px;
-				right: -80px;
-			}
+  
+		/* For medium screens */
+		@media (min-width: $md) {
+		  max-width: 45vw;
+		  top: -40vh;
 		}
+  
+		/* For large screens */
+		@media (min-width: $lg) {
+		  top: 0;
+		  max-width: 40vw;
+		  right: 0; /* Stay anchored to the extreme right */
+		}
+ 
+		/* For extra large screens */
+		@media (min-width: $xl) {
+		  top: -10vh;
+		  max-width: 35vw;
+		  right: 0;
+		}
+		/* For ultra large screens */
+		@media (min-width: $xxl) {
+		  top: -15vh;
+		  max-width: 50vw;
+		  right: 0;
+		}
+		@media (max-width: $xxl) {
+			top: -5vh;
+			max-width: 50vw;
+			right: 2vw;
+		  }
+		@media (min-width: $desktop) {
+			top: -5vh;
+			max-width: 50vw;
+			right: 0;
+		  }
+	  }
+  
+	  /* Background dots, adjust similarly */
+	  &:after {
+		content: "";
+		position: absolute;
+		width: 20vw;
+		height: 30vh;
+		// background-color: red;
+		background-image: url('../assets/images/dots-light.svg');
+		background-size: contain;
+		background-repeat: no-repeat;		
+		right: -10vw; /* Adjust based on viewport */
+		top: -10vh;
+		z-index: 1;
+		@media (max-width: $md) {
+		  display: none; /* Hide on small screens */
+		}
+  
+		@media (min-width: $md) {
+		  top: 10vh;
+		  right: 5vw;
+		}
+  
+		@media (min-width: $lg) {
+		  top: -5vh;
+		  right: 0;
+		}
+  
+		@media (min-width: $xl) {
+		  top: -10vh;
+		  right: 0;
+		}
+  
+		@media (min-width: $xxl) {
+		  top: -5vh;
+		  right: -5vw;
+		}
+		@media (max-width: $xxl) {
+			top: 1vh;
+			right: 0;
+		  }
+		@media (min-width: $desktop) {
+			top: 2vh;
+			right: -5vw;
+		  }
+	  }
 	}
-}
+  }
+  
