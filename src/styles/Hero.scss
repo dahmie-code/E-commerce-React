@@ -53,37 +53,33 @@
 	.hero-img-wrap {
 	  position: relative;  
 	  img {
-		position: absolute; /* Set absolute to anchor it to the right */
+		position: absolute; 
 		top: 0;
-		right: 0; /* Aligned to the extreme right */
+		right: 0; 
 		z-index: 2;
-		max-width: 50vw; /* Relative size */
-		
-		/* Hide image on smaller screens */
+		max-width: 50vw; 
+
 		@media (max-width: $md) {
 		  display: none;
 		}
-  
-		/* For medium screens */
+
 		@media (min-width: $md) {
 		  max-width: 45vw;
 		  top: -40vh;
 		}
-  
-		/* For large screens */
+
 		@media (min-width: $lg) {
 		  top: 0;
 		  max-width: 40vw;
-		  right: 0; /* Stay anchored to the extreme right */
+		  right: 0; 
 		}
  
-		/* For extra large screens */
 		@media (min-width: $xl) {
 		  top: -10vh;
 		  max-width: 35vw;
 		  right: 0;
 		}
-		/* For ultra large screens */
+
 		@media (min-width: $xxl) {
 		  top: -15vh;
 		  max-width: 50vw;
@@ -100,8 +96,7 @@
 			right: 0;
 		  }
 	  }
-  
-	  /* Background dots, adjust similarly */
+
 	  &:after {
 		content: "";
 		position: absolute;
