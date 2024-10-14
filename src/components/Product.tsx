@@ -5,7 +5,6 @@ import { limitToFirst, onValue, query, ref } from 'firebase/database';
 import { database } from '../Firebase/firebaseConfig';
 
 
-
 type ProductItem = {
   id: string;
   name: string;
