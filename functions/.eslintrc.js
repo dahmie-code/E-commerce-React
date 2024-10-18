@@ -14,7 +14,7 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: ["tsconfig.json", "tsconfig.dev.json"],
+    project: ["./e-commerce/tsconfig.json", "./e-commerce/tsconfig.dev.json"],
     sourceType: "module",
   },
   ignorePatterns: [

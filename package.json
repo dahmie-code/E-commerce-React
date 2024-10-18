@@ -15,6 +15,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/stripe": "^8.0.417",
     "bootstrap": "^5.3.3",
     "country-list": "^2.3.0",
     "firebase": "^10.13.2",
@@ -22,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "sass": "^1.79.4",
+    "stripe": "^17.2.0",
     "tiny-slider": "^2.9.4",
     "tiny-slider-react": "^0.5.7"
   },
